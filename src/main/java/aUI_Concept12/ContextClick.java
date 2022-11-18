@@ -1,0 +1,31 @@
+package aUI_Concept12;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+
+public class ContextClick {
+
+	public static void main(String[] args) throws InterruptedException {
+   
+		
+		System.setProperty("webdriver.chrome.driver", "./drivers/chromedriver.exe");
+		ChromeDriver driver=new ChromeDriver();
+		driver.navigate().to("https://swisnl.github.io/jQuery-contextMenu/demo.html");
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		System.out.println(driver.getTitle());
+		
+		WebElement rightClick = driver.findElementByXPath("//span[text()='right click me']");
+		Actions action=new Actions(driver);
+		//perform RightClick -contextClick
+		action.contextClick(rightClick).perform();
+		
+		
+		Thread.sleep(3000);
+		driver.close();
+	}
+
+}
